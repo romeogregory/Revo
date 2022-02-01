@@ -23,7 +23,10 @@
                         @error('username') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                     <div class="fv-row mb-7">
-                        <label class="form-label fw-bolder text-dark fs-6">Email</label>
+                        <label class="form-label fw-bolder text-dark fs-6">Email
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                title="Email address must be active for verification"></i>
+                        </label>
                         <input
                             class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror"
                             type="email" value="{{ old('email') }}" name="email" autocomplete="off" required />

@@ -3,5 +3,7 @@
         Dashboard
     </x-slot>
 
-    Meme
+    @if (session()->has('mode') == 'administrator')
+        {{ session('mode') }}
+    @endif
 </x-app-layout>

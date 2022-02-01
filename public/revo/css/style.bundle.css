@@ -40843,7 +40843,6 @@ code:not([class*=language-]) {
 }
 .input-group.input-group-solid .input-group-text {
   background-color: #1b1b29;
-  border-color: #1b1b29;
 }
 .input-group.input-group-solid .input-group-text + .form-control {
   border-left-color: #323248;

@@ -12,10 +12,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('revo/css/style.bundle.css') }}" />
-    <link rel="stylesheet" href="{{ mix('revo/plugins/global/plugins.bundle.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ mix('revo/css/style.dark.bundle.css') }}" />
+    <link rel="stylesheet" href="{{ mix('revo/plugins/global/plugins.dark.bundle.css') }}" />
+    <link rel="stylesheet" href="{{ mix('revo/plugins/global/plugins-custom.dark.bundle.css') }}" />
+
+    @stack('styles')
 
     @livewireStyles
+
 
 </head>
 
@@ -32,7 +36,7 @@
                     <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
                         <div class="page-title d-flex flex-column me-3">
                             <h1 class="d-flex text-white fw-bolder my-1 fs-3">{{ $title }}</h1>
-                            <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+                            {{-- <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                                 <li class="breadcrumb-item text-white opacity-75">
                                     <a href="../../demo2/dist/index.html" class="text-white text-hover-primary">Home</a>
                                 </li>
@@ -44,12 +48,14 @@
                                     <span class="bullet bg-white opacity-75 w-5px h-2px"></span>
                                 </li>
                                 <li class="breadcrumb-item text-white opacity-75">Multipurpose</li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>
                 <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
-                    {{ $slot }}
+                    <div class="content flex-row-fluid" id="kt_content">
+                        {{ $slot }}
+                    </div>
                 </div>
                 @include('layouts.footer')
             </div>
@@ -63,6 +69,9 @@
     <script src="{{ mix('revo/js/scripts.bundle.js') }}"></script>
 
     @livewireScripts
+
+    @stack('scripts')
+
 
 </body>
 

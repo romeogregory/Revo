@@ -33,7 +33,7 @@ mix.options({
 del.sync(['public/css/*', 'public/js/*', 'public/media/*', 'public/plugins/*',]);
 
 // Build 3rd party plugins css/js
-mix.sass(`resources/assets/core/plugins/plugins.dark.scss`, `public/revo/plugins/global/plugins.bundle.css`).then(() => {
+mix.sass(`resources/assets/core/plugins/plugins.dark.scss`, `public/revo/plugins/global/plugins.dark.bundle.css`).then(() => {
     // remove unused preprocessed fonts folder
     rimraf(path.resolve('public/fonts'), () => {
     });
@@ -45,12 +45,13 @@ mix.sass(`resources/assets/core/plugins/plugins.dark.scss`, `public/revo/plugins
     .scripts(require('./resources/assets/core/plugins/plugins.js'), `public/revo/plugins/global/plugins.bundle.js`);
 
 // Build extended plugin styles
-mix.sass(`resources/assets/revo/sass/plugins.dark.scss`, `public/revo/plugins/global/plugins-custom.bundle.css`);
+mix.sass(`resources/assets/revo/sass/plugins.dark.scss`, `public/revo/plugins/global/plugins-custom.dark.bundle.css`);
 
 // Build Metronic css/js
-mix.sass(`resources/assets/revo/sass/style.dark.scss`, `public/revo/css/style.bundle.css`, {sassOptions: {includePaths: ['node_modules']}})
+mix.sass(`resources/assets/revo/sass/style.dark.scss`, `public/revo/css/style.dark.bundle.css`, {sassOptions: {includePaths: ['node_modules']}})
     // .options({processCssUrls: false})
     .scripts(require(`./resources/assets/revo/js/scripts.js`), `public/revo/js/scripts.bundle.js`);
+
 
 
 

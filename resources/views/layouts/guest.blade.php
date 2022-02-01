@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('revo/css/style.bundle.css') }}" />
-    <link rel="stylesheet" href="{{ mix('revo/plugins/global/plugins.bundle.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ mix('revo/css/style.dark.bundle.css') }}" />
+    <link rel="stylesheet" href="{{ mix('revo/plugins/global/plugins.dark.bundle.css') }}" />
+    <link rel="stylesheet" href="{{ mix('revo/plugins/global/plugins-custom.dark.bundle.css') }}" />
 
 </head>
 

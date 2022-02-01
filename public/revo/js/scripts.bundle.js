@@ -6942,6 +6942,148 @@ var KTLayoutSearch = function() {
 KTUtil.onDOMContentLoaded(function() {
     KTLayoutSearch.init();
 });
+"use strict";
+
+// Class definition
+var KTLayoutAside = function () {
+    // Private variables
+    var toggle;
+    var aside;
+
+    // Private functions
+    var handleToggle = function () {
+       var toggleObj = KTToggle.getInstance(toggle);
+
+       // Add a class to prevent aside hover effect after toggle click
+       toggleObj.on('kt.toggle.change', function() {
+           aside.classList.add('animating');
+
+           setTimeout(function() {
+                aside.classList.remove('animating');
+           }, 300);
+       })
+    }
+
+    // Public methods
+    return {
+        init: function () {
+            // Elements
+            aside = document.querySelector('#kt_aside');
+            toggle = document.querySelector('#kt_aside_toggle');
+
+            if (!aside || !toggle) {
+                return;
+            }
+
+            handleToggle();
+        }
+    };
+}();
+
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTLayoutAside.init();
+});
+"use strict";
+
+// Class definition
+var KTLayoutExplore = function() {
+    // Private variables    
+    var explore;
+
+    // Private functions
+
+    // Public methods
+	return {
+		init: function() {
+            // Elements
+            explore = document.querySelector('#kt_explore');
+
+            if (!explore) {
+                return;
+            }      
+		}
+	};
+}();
+
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTLayoutExplore.init();
+});
+"use strict";
+
+// Class definition
+var KTLayoutToolbar = function () {
+    // Private variables
+    var toolbar;
+
+    // Private functions
+    var initForm = function () {
+        var rangeSlider = document.querySelector("#kt_toolbar_slider");
+        var rangeSliderValueElement = document.querySelector("#kt_toolbar_slider_value");
+
+        if (!rangeSlider) {
+            return;
+        }
+
+        noUiSlider.create(rangeSlider, {
+            start: [5],
+            connect: [true, false],
+            step: 1,
+            format: wNumb({
+                decimals: 1
+            }),
+            range: {
+                min: [1],
+                max: [10]
+            }
+        });
+
+        rangeSlider.noUiSlider.on("update", function (values, handle) {
+            rangeSliderValueElement.innerHTML = values[handle];
+        });
+
+        var handle = rangeSlider.querySelector(".noUi-handle");
+
+        handle.setAttribute("tabindex", 0);
+
+        handle.addEventListener("click", function () {
+            this.focus();
+        });
+
+        handle.addEventListener("keydown", function (event) {
+            var value = Number(rangeSlider.noUiSlider.get());
+
+            switch (event.which) {
+                case 37:
+                    rangeSlider.noUiSlider.set(value - 1);
+                    break;
+                case 39:
+                    rangeSlider.noUiSlider.set(value + 1);
+                    break;
+            }
+        });
+    }
+
+    // Public methods
+    return {
+        init: function () {
+            // Elements
+            toolbar = document.querySelector('#kt_toolbar');
+
+            if (!toolbar) {
+                return;
+            }
+
+            initForm();
+        }
+    };
+}();
+
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTLayoutToolbar.init();
+});
 $(document).on('click', '.button-ajax', function (e) {
     e.preventDefault();
     var action = $(this).data('action');
